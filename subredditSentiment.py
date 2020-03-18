@@ -12,12 +12,11 @@ with open('sb.txt') as f:
 
     for line in f:
         subreddit = reddit.subreddit(line.strip())
-        # write web agent to get converter for datetime to epoch on a daily basis for updates
-        day_start = 1510635601
-        day_end = 1510721999
 
-        sub_submissions = subreddit.submissions(day_start, day_end)
-
+        #subreddit.submissions() has been removed from the API
+        #sub_submissions = subreddit.submissions(day_start, day_end)
+        sub_submissions = subreddit.search("coronavirus", time_filter = 'day')
+        
         sub_sentiment = 0
         num_comments = 0
 
